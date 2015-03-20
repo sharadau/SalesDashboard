@@ -1,0 +1,44 @@
+<div class="header">
+  <div class="navbar navbar-default" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <span class="navbar-brand subheader" style="color: #000066"><b>CMS Participant List</b></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <form>
+    <!-- <div ng-if="prospects.length > 5">-->
+    <div class="input-group input-group-lg">
+      <input type="text" class="form-control" data-ng-model="searchText.name"/>
+      <div class="input-group-btn">
+        <button class="btn btn-default">
+          <span class="glyphicon glyphicon-filter"></span> Filter
+        </button>
+      </div>
+    </div>
+  </form><br>
+</div>
+<div class="container">
+<table class="table table-hover table-responsive table-condensed tab-content" data-ng-repeat="participant in participants | filter:searchText">
+  <td width="50%">
+    <a ui-sref="prospect.view({participantId: participant._id})">{{participant.name}}</a>
+  </td>
+</table>
+  </div>
+<div class="container">
+      <label class="navbar-brand subheader" style="color: #000066"><b>Add Participant</b></label>
+</div>
+  <div class="input-group">
+    <span class="input-group-addon">User</span>
+    <input type="text" ng-model="asyncSelected" placeholder="Locations loaded via $http" typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations" class="form-control">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Add</button>
+                    </span>
+  </div>
+
+
+
+
