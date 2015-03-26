@@ -28,9 +28,15 @@ angular.module('dashboardApp')
 
       $scope.newProspect = {};
 
-      ProspectService.updateProspect(newProspect);
-     // $state.transitionTo('prospect.view', {prospectId: newProspect._id});
-      $state.transitionTo('prospect.view', {prospectId: 1});
+      if(newProspect._id) {
+        ProspectService.updateProspect(newProspect);
+      }else
+      {
+        newProspect._id = getUniqueTime();
+        ProspectService.addProspect(newProspect);
+      }
+      $state.transitionTo('prospect.view', {prospectId: newProspect._id});
+     // $state.transitionTo('prospect.view', {prospectId: 2});
     };
 
     $scope.cancelUpdate = function() {

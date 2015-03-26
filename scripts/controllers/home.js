@@ -14,15 +14,15 @@ angular.module('dashboardApp')
       'AngularJS',
       'Karma'
     ];
-    $scope.prospects = [
+    /*$scope.prospects = [
       {name: "Yvolver",state:"New",_id:"1"},
       {name: "PayWize",state:"Internal Preparation",_id:"2"},
       {name: "CNM Connect",state:"Initiation",_id:"3"}
-    ];
-    /*$scope.prospectList = ProspectService.getAllProspects()
+    ];*/
+    $scope.prospectList = ProspectService.getAllProspects()
       .success (function (data){
       $scope.prospects = data;
     })
       .error (function (error){
-      console.log (error.msg);});*/
+      console.log (error);});
   });

@@ -16,7 +16,7 @@ angular.module('dashboardApp')
     ];
 
      console.log($stateParams.prospectId);
-    $stateParams.prospectId = 2;
+    //$stateParams.prospectId = 3;
     ProspectService.getProspect($stateParams.prospectId)
       .success (function (data){
       $scope.prospect = data;

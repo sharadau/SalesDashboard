@@ -37,23 +37,33 @@ angular
         controller: "ProspectCtrl"
       })
       .state("prospect.edit", {
-        url: "/edit",
+        url: "/edit/:prospectId",
         templateUrl: "views/prospect.edit.html",
         controller: "ProspectEditCtrl"
       })
       .state("prospect.view", {
-        url: "/view",
+        url: "/view/:prospectId",
         templateUrl: "views/prospect.view.html",
         controller: "ProspectViewCtrl"
       })
       .state("participant", {
-        url: "/participant",
+        url: "/participant/:participantId",
         templateUrl: "views/participant.html",
         controller: "ParticipantCtrl"
       })
       .state("participant.list", {
-        url: "/list",
+        url: "/list/:prospectId",
         templateUrl: "views/participant.list.html",
         controller: "ParticipantListCtrl"
+      })
+      .state("emails", {
+        url: "/emails",
+        templateUrl: "views/emails.html",
+        controller: "ParticipantCtrl"
+      })
+      .state("emails.list", {
+        url: "/list",
+        templateUrl: "views/emails.list.html",
+        controller: "EmailsListCtrl"
       })
   });

@@ -8,31 +8,46 @@
  * Controller of the dashboardApp
  */
 angular.module('dashboardApp')
-  .controller('ParticipantListCtrl', function ($scope,$http) {
+  .controller('ParticipantListCtrl', function ($scope, $state, $stateParams, $http, participant) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
 
-    $scope.participants = [
+  $scope.prospect_id = $stateParams.prospectId;
+
+  $scope.fetchList = function(){
+    participant.getParticipantForProspect($stateParams.prospectId)
+      .success (function (data){
+      $scope.participants = data;
+      //console.log("Participants: "+$scope.participants)
+    })
+      .error (function (error){
+      console.log (error);
+    });
+  }
+    $scope.fetchList();
+    /*$scope.participants = [
       {name: "Subu Sankara",_id:"1"},
       {name: "Rohit Ghatol",_id:"2"},
       {name: "Ashish Shanker",_id:"3"},
-      {name: "Ashutosh Kumar",_id:"4"} 
-    ];
+      {name: "Ashutosh Kumar",_id:"4"}
+    ];*/
     // Any function returning a promise object can be used to load values asynchronously
-    $scope.getLocation = function(val) {
-      return $http.get('http://maps.googleapis.com/maps/api/geocode/json', {
-        params: {
-          address: val,
-          sensor: false
-        }
+    $scope.getEmployees = function(val) {
+      return $http.get('http://localhost:3000/api/employees/name/'+val, {
       }).then(function(response){
-        return response.data.results.map(function(item){
-          return item.formatted_address;
+          console.log(response.data);
+        return response.data.map(function(item){
+         return item.name;
         });
       });
     };
+    $scope.addParticipant = function($prospect_id){
+      console.log("addParticipant "+$scope.asyncSelected+" "+$prospect_id);
+      participant.addParticipant($scope.asyncSelected, $prospect_id);
+      $scope.fetchList();
 
+    };
   });

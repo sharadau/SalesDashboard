@@ -24,9 +24,9 @@
       <div class="collapse navbar-collapse" id="js-navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a ui-sref="participant.list({prospectId: prospect._id})"> Participants</a></li>
-          <li><a ui-sref="bucket.list"><span class="glyphicon glyphicon-inbox"></span> Uncategorized </a></li>
-          <li><a ui-sref="participant.edit({prospectId: prospect._id})"><span class="glyphicon glyphicon-edit"></span> Edit </a></li>
-          <li><a ui-sref="participant.delete({prospectId: prospect._id})"><span class="glyphicon glyphicon-remove"></span> Delete </a></li>
+          <li><a ui-sref="emails.list({prospectId: prospect._id})"><span class="glyphicon glyphicon-inbox"></span> Uncategorized </a></li>
+     <!--     <li><a ui-sref="prospect.edit({prospectId: prospect_id})"><span class="glyphicon glyphicon-edit"></span> Edit </a></li>
+          <li><a ui-sref="prospect.delete({prospectId: prospect._id})"><span class="glyphicon glyphicon-remove"></span> Delete </a></li>-->
         </ul>
       </div>
       </div>
@@ -34,36 +34,94 @@
   </div>
 </div>
 
+<!--<div id="parent">
+  <div class="panel">
+    <div data-toggle="collapse" data-parent="#parent" data-target="#child">test</div>
+    <div id="child" class="collapse in">
+      This is the content
+    </div>
+  </div>
+  <div class="panel">
+    <div data-toggle="collapse" data-parent="#parent" data-target="#child2">test</div>
+    <div id="child2" class="collapse">
+      This is the content
+    </div>
+  </div>
+</div>-->
+
 <accordion close-others="oneAtATime">
   <accordion-group is-open="status.isFirstOpen">
     <accordion-heading>
-      <b>Initiation</b> <i class="glyphicon glyphicon-ok-sign" title="Completed"> </i> Stage completed &nbsp;&nbsp; <a class="glyphicon glyphicon-envelope"> Email</a> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+      <b>Prospect Information</b> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
     </accordion-heading>
-    Prospect is initiated on 01/02/2014
+    <table>
+      <tr><td></td><td></td><td><a ui-sref="prospect.edit({prospectId:prospect._id})"><span class="glyphicon glyphicon-edit"></span> Edit </a></b> &nbsp;&nbsp;<a ui-sref="prospect.delete({prospectId:prospect._id})"><span class="glyphicon glyphicon-remove"></span> Delete </a></td></tr>
+      <tr><td width="30%"><b>Name : </b></td><td width="50%"> Prospect Information</td></tr>
+      <tr><td><b>Initiated on : </b></td><td width="50%"> 01/02/2014</td></tr>
+      <tr><td><b>Description : </b></td><td> Prospect Information</td></tr>
+      <tr><td><b>Client company : </b></td><td> Prospect Information</td></tr>
+      <tr><td><b>Company URL: </b></td><td> Prospect Information</td></tr>
+      <tr><td><b>Team Mix: </b></td><td> Prospect Information</td></tr>
+      <tr><td><b>Other Comments: </b></td><td> Prospect Information</td></tr>
+    </table>
   </accordion-group>
   <accordion-group>
     <accordion-heading>
-      <b>Clarification</b> <a class="glyphicon glyphicon-circle-arrow-right" title="Move in Next state"> Mark Complete </a> &nbsp;&nbsp; <a class="glyphicon glyphicon-envelope"> Email</a> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+      <b>Initiation</b> <i class="glyphicon glyphicon-ok-sign" title="Completed"> </i> Stage completed &nbsp;&nbsp; <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
     </accordion-heading>
-      Clarification
+    <table>
+      <tr><td width="50%"></td><td width="40%"></td><td><a class="glyphicon glyphicon-envelope"> Email</a> </td></tr>
+      <tr><td width="50%">Prospect is initiated on 01/02/2015</td><td></td></tr>
+      <tr><td width="50%"><b>Email Subject: </b></td><td></td></tr>
+      <tr><td width="50%"><b>Contents: </b></td><td></td></tr>
+      <tr><td width="50%"><b>Reply from Ashish Shanker on 14/02/2015:</b></td><td></td></tr>
+      <tr><td width="50%">Please involve Mayuresh</td><td></td></tr>
+      <tr><td width="50%"><b>Reply from Ashutosh on 15/02/2015:</b></td><td></td></tr>
+      <tr><td width="50%">Please involve Vitthal</td><td></td></tr>
+    </table>
   </accordion-group>
   <accordion-group>
     <accordion-heading>
-      <b>Internal Preparation</b> <a class="glyphicon glyphicon-circle-arrow-right" title="Move in Next state"> Mark Complete </a>  &nbsp;&nbsp; <a class="glyphicon glyphicon-envelope"> Email</a> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+      <b>Clarification</b> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
     </accordion-heading>
-    Internal Preparation
+    <table>
+      <tr><td width="70%"></td><td><a class="glyphicon glyphicon-circle-arrow-right" title="Move in Next state"> Mark Complete </a></td><td><a class="glyphicon glyphicon-envelope"> Email</a> </td></tr>
+      <tr><td>Clarification</td><td></td></tr>
+      <tr><td width="50%"><b>Reply from Ashutosh on 19/02/2015:</b></td><td></td></tr>
+      <tr><td width="50%">Questions list</td><td></td></tr>
+    </table>
   </accordion-group>
   <accordion-group>
     <accordion-heading>
-     <b>Client Call</b> <a class="glyphicon glyphicon-circle-arrow-right" title="Move in Next state"> Mark Complete  </a>  &nbsp;&nbsp; <a class="glyphicon glyphicon-envelope"> Email</a> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+      <b>Internal Preparation</b>  <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
     </accordion-heading>
-    Client Call
+    <table>
+      <tr><td width="70%"></td><td><a class="glyphicon glyphicon-circle-arrow-right" title="Move in Next state"> Mark Complete </a></td><td><a class="glyphicon glyphicon-envelope"> Email</a> </td></tr>
+      <tr><td>Internal Preparation</td><td></td></tr>
+      <tr><td width="50%"><b>Reply from Rohit on 21/02/2015:</b></td><td></td></tr>
+      <tr><td width="50%">Questions list</td><td></td></tr>
+    </table>
   </accordion-group>
   <accordion-group>
     <accordion-heading>
-      <b>Engagement Start</b> <a class="glyphicon glyphicon-circle-arrow-right" title="Move in Next state"> Mark Complete </a>  &nbsp;&nbsp; <a class="glyphicon glyphicon-envelope"> Email</a> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+     <b>Client Call</b> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
     </accordion-heading>
-    Engagement Start
+    <table>
+      <tr><td width="70%"></td><td><a class="glyphicon glyphicon-circle-arrow-right" title="Move in Next state"> Mark Complete </a></td><td><a class="glyphicon glyphicon-envelope"> Email</a> </td></tr>
+      <tr><td>Client Call</td><td></td></tr>
+      <tr><td width="50%"><b>Reply from Ashish on 22/02/2015:</b></td><td></td></tr>
+      <tr><td width="50%">Call on 25/02/2015 at 5pm with George</td><td></td></tr>
+    </table>  </accordion-group>
+  <accordion-group>
+    <accordion-heading>
+      <b>Engagement Start</b> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+    </accordion-heading>
+    <table>
+      <tr><td width="70%"></td><td><a class="glyphicon glyphicon-circle-arrow-right" title="Move in Next state"> Mark Complete </a></td><td><a class="glyphicon glyphicon-envelope"> Email</a> </td></tr>
+      <tr><td>Engagement Satrt</td><td></td></tr>
+      <tr><td width="50%"><b>Reply from Ashish on 22/02/2015:</b></td><td></td></tr>
+      <tr><td width="50%">Kick off call on 01/03/2015</td><td></td></tr>
+    </table>
   </accordion-group>
   <!--
   <accordion-group heading="{{group.title}}" ng-repeat="group in groups">

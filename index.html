@@ -44,7 +44,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="active"><a ui-sref="home"><span class="glyphicon glyphicon-home"></span> Home</a></li>
               <li><a ui-sref="prospect.edit"><span class="glyphicon glyphicon-certificate"></span> New</a></li>
-              <li><a ui-sref="bucket.list"><span class="glyphicon glyphicon-inbox"></span> Uncategorized </a></li>
+              <li><a ui-sref="emails.list"><span class="glyphicon glyphicon-inbox"></span> Uncategorized </a></li>
             </ul>
           </div>
         </div>
@@ -70,14 +70,12 @@
        ga('send', 'pageview');
     </script>
 
+    <script src="scripts/utils/utils.js"></script>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
-    <script src="scripts/ui-bootstrap.js"></script>
-    <script src="scripts/ui-bootstrap-tpls.js"></script>
-
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-aria/angular-aria.js"></script>
@@ -105,8 +103,13 @@
         <script src="scripts/controllers/prospect.view.js"></script>
         <script src="scripts/controllers/participant.js"></script>
         <script src="scripts/controllers/participant.list.js"></script>
+        <script src="scripts/controllers/emails.js"></script>
+        <script src="scripts/controllers/emails.list.js"></script>
+        <script src="scripts/services/emails.js"></script>
+        <script src="scripts/services/participant.js"></script>
         <!-- endbuild -->
 
-
+    <script src="scripts/ui-bootstrap.js"></script>
+    <script src="scripts/ui-bootstrap-tpls.js"></script>
 </body>
 </html>

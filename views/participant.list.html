@@ -22,22 +22,25 @@
   </form><br>
 </div>
 <div class="container">
+  
 <table class="table table-hover table-responsive table-condensed tab-content" data-ng-repeat="participant in participants | filter:searchText">
   <td width="50%">
-    <a ui-sref="prospect.view({participantId: participant._id})">{{participant.name}}</a>
+    <a ui-sref="participant.view({participantId: participant._id})">{{participant.name}}</a>
   </td>
 </table>
   </div>
 <div class="container">
       <label class="navbar-brand subheader" style="color: #000066"><b>Add Participant</b></label>
 </div>
+<form name="addParticipantForm" novalidate>
   <div class="input-group">
-    <span class="input-group-addon">User</span>
-    <input type="text" ng-model="asyncSelected" placeholder="Locations loaded via $http" typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations" class="form-control">
+    <span class="input-group-addon">Select</span>
+    <input type="text" ng-model="asyncSelected" placeholder="Locations loaded via $http" typeahead="name for name in getEmployees($viewValue)" typeahead-loading="loading" class="form-control">
                     <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Add</button>
+                      <button type=button class="btn btn-default" data-ng-click="addParticipant(prospect_id)">Add</button>
                     </span>
   </div>
+  </form>
 
 
 
