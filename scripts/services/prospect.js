@@ -26,12 +26,8 @@ angular.module('dashboardApp')
         }
       };
 
-
-       $http.get('http://localhost:3000/api/projects')
-      // $http.setRequestHeader("Access-Control-Allow-Origin", "*");
-      /*$http.defaults.useXDomain = true;
-      delete $http.defaults.headers.common['X-Requested-With'];
-      $http.get('http://localhost:8080/SalesDashBoard/rest/prospect/fetchProspects/1')*/
+//fecth prospecs from nodejs server
+      $http.get('http://localhost:3000/api/projects')
         .success(function (items) {
           prospects = items;
           successCallback(prospects);
@@ -42,67 +38,29 @@ angular.module('dashboardApp')
           }
         });
 
-
-      //$.ajax({
-      //  type: "POST",
-      //  dataType: 'jsonp',
-      //  url: 'http://localhost:8080/SalesDashBoard/rest/prospect/fetchProspects/1',
-      //  crossDomain : true,
-      //  headers: {
-      //    'Content-Type': 'application/json'
-      //  }
-      //})
-      //  .done(function( data ) {
-      //    console.log("done");
-      //  })
-      //  .fail( function(xhr, textStatus, errorThrown) {
-      //    alert(xhr.responseText);
-      //    alert(textStatus);
-      //    alert(errorThrown);
-      //  });
-
-     /* var baseRestUrl = 'http://localhost:8080';
-      var req = {
-        method: 'POST',
-        url: 'http://localhost:8080//SalesDashBoard//rest//prospect//fetchProspects//1',
+//fetch prospects from java server
+     /* $.ajax({
+        type: "POST",
+        dataType: 'json',
+        url: 'http://localhost:8080/SalesDashBoard/rest/prospect/fetchProspects/1',
+        //crossDomain : true,
         headers: {
           'Content-Type': 'application/json'
-        },
-        datatype: 'jsonp'
-      }
-      $http(req).success(function (items) {
-        success(items);
-        console.log(items);
-      });
-*/
-      return response;
-
-      /*var promise = $http({
-        url: 'http://localhost:8080/SalesDashBoard/rest/prospect/fetchProspects/1',
-        method: 'POST',
-        params: {
-          contacts: "+123",
-          text: "Testing"
-        },
-        headers: {
-          'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'
         }
-      })*/
-     /* $http({
-        method : 'POST',
-        url : 'http://localhost:8080/SalesDashBoard/rest/prospect/fetchProspects/1'
-        //data : $.param($scope.formData), // pass in data as strings
-        //headers : { 'Content-Type': 'application/json' } // set the headers so angular passing info as form data (not request payload)
-      }).success(function (items) {
-        prospects = items;
-        successCallback(prospects);
-      }).error(function (error) {
-        if (error) {
-          errorCallback(error);
-        };
-      });
-      return response;*/
+      })
+       .success(function (items) {
+          prospects = items['data'];
+          console.log("in service "+items['data']);          
+          successCallback(prospects);
+        })
+        .error(function (error) {
+          if (error) {
+            errorCallback(error);
+          }
+        });
 
+    */
+      return response;
 
     };
     this.getProspect = function (prospectId) {
@@ -125,17 +83,45 @@ angular.module('dashboardApp')
       return response;
     };
 
-    this.addProspect = function(newProspect) {
-      //var newProject={};
-      newProspect.state = "New";
-      newProspect.name = newProspect.name;
-      newProspect.organization = newProspect.company;
-      newProspect.employees = ['Ram','Raghu'];
-      newProspect.owner = 'Ram';
-      newProspect.openpositions = 2;
-      newProspect.reddays = 0;
-    //  newProspect._id = getUniqueTime();
-      $http.post('http://localhost:3000/api/projects', newProspect)
+    this.addProspect = function(newProspect1) {
+    	console.log("newProspect1:"+newProspect1.name);
+      var newProspect={};
+    //add prospect to nodejs server
+      newProspect1.state = "New";   
+      newProspect1.organization = newProspect1.company;
+      newProspect1.employees = ['Ram','Raghu'];
+      newProspect1.owner = 'Ram';
+      newProspect1.openpositions = 2;
+      newProspect1.reddays = 0;
+     // newProspect1._id = newProspect1.id;
+      //console.log(newProspect1);
+      $http.post('http://localhost:3000/api/projects', newProspect1)
+     
+    	 //add prospect to java server
+       /* newProspect.name = newProspect1.name;
+        newProspect.companyURL = newProspect1.company;
+        newProspect.lookupvo = {'lookupId':9};
+        newProspect.description = newProspect1.description;
+        newProspect.createdDate = new Date().getTime();
+        newProspect.createdBy = 1;
+        newProspect.updatedDate = new Date().getTime();
+        newProspect.updatedBy = 1;    
+        newProspect.teamMixList = [{"lookupvo":{
+            "lookupId":1
+        },
+        "quantity":4}];        
+        	console.log(JSON.stringify(newProspect));
+     
+        $.ajax({
+            type: "POST",
+            dataType: 'json',
+            data:JSON.stringify(newProspect),
+            url: 'http://localhost:8080/SalesDashBoard/rest/prospect/create',
+            //crossDomain : true,
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })*/
         .success(function (item) {
           prospects.push(item);
         })

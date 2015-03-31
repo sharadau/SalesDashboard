@@ -15,7 +15,7 @@ angular.module('dashboardApp')
       'Karma'
     ];
 
-     console.log($stateParams.prospectId);
+     console.log("pros id: "+$stateParams.prospectId);
     //$stateParams.prospectId = 3;
     ProspectService.getProspect($stateParams.prospectId)
       .success (function (data){

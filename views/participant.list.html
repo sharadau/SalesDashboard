@@ -2,7 +2,7 @@
   <div class="navbar navbar-default" role="navigation">
     <div class="container">
       <div class="navbar-header">
-        <span class="navbar-brand subheader" style="color: #000066"><b>CMS Participant List</b></span>
+        <span class="navbar-brand subheader" style="color: #000066"><b>{{prospect_name}} Participant List </b></span>
       </div>
     </div>
   </div>
@@ -22,12 +22,14 @@
   </form><br>
 </div>
 <div class="container">
-  
+  <div style="overflow: scroll; height:300px;">
 <table class="table table-hover table-responsive table-condensed tab-content" data-ng-repeat="participant in participants | filter:searchText">
-  <td width="50%">
+  <td width="80%">
     <a ui-sref="participant.view({participantId: participant._id})">{{participant.name}}</a>
   </td>
+  <td><a ui-sref="participant.delete({participantId:participant._id})"><span class="glyphicon glyphicon-remove"></span> Delete </a></td>
 </table>
+  </div>
   </div>
 <div class="container">
       <label class="navbar-brand subheader" style="color: #000066"><b>Add Participant</b></label>
@@ -35,7 +37,7 @@
 <form name="addParticipantForm" novalidate>
   <div class="input-group">
     <span class="input-group-addon">Select</span>
-    <input type="text" ng-model="asyncSelected" placeholder="Locations loaded via $http" typeahead="name for name in getEmployees($viewValue)" typeahead-loading="loading" class="form-control">
+    <input type="text" ng-model="asyncSelected" placeholder="Employees" typeahead="name for name in getEmployees($viewValue)" typeahead-loading="loading" class="form-control">
                     <span class="input-group-btn">
                       <button type=button class="btn btn-default" data-ng-click="addParticipant(prospect_id)">Add</button>
                     </span>

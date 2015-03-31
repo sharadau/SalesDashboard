@@ -22,7 +22,7 @@ angular
   ]).config(function($stateProvider, $urlRouterProvider) {
     //
     // For any unmatched url, redirect to /state1
-    $urlRouterProvider.otherwise("/home");
+    //$urlRouterProvider.otherwise("/home");
     //
     // Now set up the states
     $stateProvider
@@ -52,7 +52,7 @@ angular
         controller: "ParticipantCtrl"
       })
       .state("participant.list", {
-        url: "/list/:prospectId",
+        url: "/list/:prospectId/:prospectName",
         templateUrl: "views/participant.list.html",
         controller: "ParticipantListCtrl"
       })
@@ -66,4 +66,7 @@ angular
         templateUrl: "views/emails.list.html",
         controller: "EmailsListCtrl"
       })
-  });
+  })
+  .run(function($state){
+    $state.go("home");
+  })

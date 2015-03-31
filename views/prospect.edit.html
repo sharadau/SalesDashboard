@@ -1,9 +1,8 @@
 <div class="container">
-  <form name="newProspectForm" novalidate>
+  <form name="newProspectForm" ng-submit="updateProspect(newProspect)" >
     <div class="panel-wrapper">
       <label class="control-label">Name: </label>
-      <input type="text" class="form-control" data-ng-model="newProspect.name" required />
-       <span ng-show="newProspectForm.name.$error.required && newProspectForm.name.$touched"></span>
+      <input type="text" class="form-control" data-ng-model="newProspect.name" required="true" />	
     </div>
 
     <div class="panel-wrapper" >
@@ -31,7 +30,7 @@
       <input type="checkbox" class="form-control" style="width:20px" data-ng-model="newProspect.sendEmail" ng-checked="true"/>
     </div>
 
-    <button class="btn btn-default" data-ng-click="updateProspect(newProspect)">
+    <button class="btn btn-default" type="submit" ng-disabled="form.$invalid" >
       <span class="glyphicon glyphicon-plus"></span> Save
     </button>
 

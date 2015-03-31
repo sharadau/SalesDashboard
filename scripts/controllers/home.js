@@ -22,7 +22,10 @@ angular.module('dashboardApp')
     $scope.prospectList = ProspectService.getAllProspects()
       .success (function (data){
       $scope.prospects = data;
+      console.log("in controler:" + $scope.prospects);
     })
       .error (function (error){
       console.log (error);});
+    console.log("list controler:" + $scope.prospects);
   });
+

@@ -38,8 +38,9 @@ angular.module('dashboardApp')
         success: function (callback) {successCallback = callback; return response;},
         error: function (callback) {errorCallback = callback; return response;}
       };
-      console.log("prospectId: " + participantId);
-      $http.get('http://localhost:3000/api/employees/prospect/'+participantId)
+      console.log("getParticipantForProspect prospectId: " + participantId);
+     // $http.get('http://localhost:3000/api/employees/prospect/'+participantId)
+        $http.get('http://localhost:3000/api/participants/prospect/'+participantId)
         .success(function(item){
           successCallback(item);
         })
@@ -54,19 +55,23 @@ angular.module('dashboardApp')
 
     this.addParticipant = function(name, prospect_id) {
       var newParticipant={};
+      console.log("name: "+name+" prospect_id: "+prospect_id);
       newParticipant.prospect_id = prospect_id ;
       newParticipant.name = name ;
+      newParticipant.email = "sharada.umarane@gmail.com" ;
       newParticipant._id = getUniqueTime();
-      $http.post('http://localhost:3000/api/employees', newParticipant)
+      $http.post('http://localhost:3000/api/participants', newParticipant)
         .success(function (item) {
           participants.push(item);
           console.log("Added participant "+name);
         })
         .error(function (error) {
           if (error) {
+        	  console.log(error);
             errorCallback(error);
           }
         });
+      this.getParticipantForProspect(prospect_id);
     };
 
     this.deleteParticipant = function(pId) {

@@ -16,7 +16,9 @@ angular.module('dashboardApp')
     ];
 
   $scope.prospect_id = $stateParams.prospectId;
-
+  $scope.prospect_name = $stateParams.prospectName;
+console.log("prospect id in participant list controller: "+$scope.prospect_id);
+console.log("prospect name in participant list controller: "+$scope.prospect_name);
   $scope.fetchList = function(){
     participant.getParticipantForProspect($stateParams.prospectId)
       .success (function (data){
@@ -44,10 +46,10 @@ angular.module('dashboardApp')
         });
       });
     };
-    $scope.addParticipant = function($prospect_id){
-      console.log("addParticipant "+$scope.asyncSelected+" "+$prospect_id);
-      participant.addParticipant($scope.asyncSelected, $prospect_id);
+    $scope.addParticipant = function(prospect_id){
+      console.log("addParticipant in cntrlr: "+$scope.asyncSelected+" "+prospect_id);
+      participant.addParticipant($scope.asyncSelected, prospect_id);
+      $scope.asyncSelected = null;
       $scope.fetchList();
-
     };
   });

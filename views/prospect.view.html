@@ -23,7 +23,7 @@
 
       <div class="collapse navbar-collapse" id="js-navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a ui-sref="participant.list({prospectId: prospect._id})"> Participants</a></li>
+          <li class="active"><a ui-sref="participant.list({prospectId: prospect._id,prospectName:prospect.name})"> Participants</a></li>
           <li><a ui-sref="emails.list({prospectId: prospect._id})"><span class="glyphicon glyphicon-inbox"></span> Uncategorized </a></li>
      <!--     <li><a ui-sref="prospect.edit({prospectId: prospect_id})"><span class="glyphicon glyphicon-edit"></span> Edit </a></li>
           <li><a ui-sref="prospect.delete({prospectId: prospect._id})"><span class="glyphicon glyphicon-remove"></span> Delete </a></li>-->
